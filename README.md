@@ -6,7 +6,7 @@
 
 #### Overlays
 ![overlay](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/overlays.png)
-> Shown with the [firewatch](https://atom.io/themes/firewatch-syntax) syntax theme. Icons by [file-icons](https://atom.io/packages/file-icons).
+> Shown with the [duotone-dark-red](https://atom.io/themes/duotone-dark-red-syntax) syntax theme. Icons by [file-icons](https://atom.io/packages/file-icons).
 
 ### New Features
 
