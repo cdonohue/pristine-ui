@@ -1,0 +1,193 @@
+// Variables
+
+@auto-breakpoint-width: 1000px;
+@auto-breakpoint-height: 600px;
+
+
+// Compact mode ----------------------------------------------
+
+@theme-layoutmode: ~'theme-@{ui-theme-name}-layoutmode';
+
+// Default
+html { font-size: @font-size; }
+
+
+// Large screen (>= 27")
+@media (min-width: 2560px) {
+  [@{theme-layoutmode}="auto"] { font-size: @font-size + 2px; }
+}
+
+// Medium screen (>= 20")
+@media (min-width: 1920px) {
+  [@{theme-layoutmode}="auto"] { font-size: @font-size + 1px; }
+}
+
+// Small screen (<= 13")
+
+.compact-mode() {
+  font-size: @font-size - 1px;
+
+  atom-workspace {
+    padding-right: 0;
+    atom-panel-container.left:empty {
+      padding-left: 0;
+    }
+  }
+
+  atom-panel-container {
+    &.header {
+      atom-panel.header > .title-bar {
+        background: @level-2-color;
+        border-bottom: 1px solid transparent;
+      }
+    }
+  }
+
+  .tree-view {
+    border-right: 1px solid @base-border-color;
+  }
+
+  atom-panel-container.footer {
+    border-top: 1px solid @base-border-color;
+  }
+
+  atom-pane-container {
+    padding-top: 0;
+
+    atom-pane {
+      border-right: 1px solid @base-border-color;
+      border-bottom: 1px solid @base-border-color;
+      .item-views {
+        border: none;
+      }
+    }
+
+    atom-pane-resize-handle.horizontal.horizontal {
+      width: initial;
+      &:before {
+        width: 8px;
+        left: -4px;
+      }
+    }
+    atom-pane-resize-handle.vertical.vertical {
+      height: initial;
+      &:before {
+        height: 8px;
+        top: -4px;
+      }
+    }
+  }
+
+  atom-panel-container {
+    &.left,
+    &.right {
+      min-width: 0;
+    }
+  }
+
+  .tab-bar {
+    .tab {
+      border-radius: 0;
+    }
+    .tab::before {
+      border-radius: 0;
+      top: 0;
+      bottom: 0;
+
+      .theme-pristine-ui & {
+        left: 1px;
+      }
+    }
+
+    .tab:first-of-type::before {
+      left: 0;
+    }
+    .tab::after {
+      border-top: none;
+      border-radius: 0;
+      background-image: none;
+      box-shadow: inset 0 1px 0 hsla(0,0%,100,.04);
+    }
+    .tab:first-of-type::after {
+      border-left: none;
+    }
+    .tab:last-of-type::after {
+      border-right: none;
+      box-shadow: inset 0 1px 0 hsla(0,0%,100,.04), 1px 0 0 @base-border-color;
+    }
+  }
+
+
+  // tree-view
+  .tree-view::before {
+    margin-top: 0;
+  }
+
+  .tree-view .project-root.project-root {
+    padding-top: 0;
+    &:before {
+      height: @ui-tab-height;
+    }
+  }
+  .theme-pristine-ui .tree-view .project-root.project-root::before {
+    border-top: none;
+  }
+}
+
+[@{theme-layoutmode}="compact"] {
+  .compact-mode();
+}
+
+@media (max-width: @auto-breakpoint-width), (max-height: @auto-breakpoint-height) {
+  [@{theme-layoutmode}="auto"] {
+    .compact-mode();
+  }
+}
+
+// Small tabs mode ----------------------------------------------
+
+@theme-tabsizing: ~'theme-@{ui-theme-name}-tabsizing';
+
+[@{theme-tabsizing}="minimum"] {
+  .minimum-width-tabs();
+}
+
+@media (max-width: @auto-breakpoint-width) {
+  [@{theme-tabsizing}="auto"] {
+    .minimum-width-tabs();
+  }
+}
+
+.minimum-width-tabs() {
+  // auto-size tabs
+  .tab,
+  .tab.active {
+    flex: 0 0 auto;
+    min-width: @ui-tab-height;
+  }
+
+  .tab .close-icon.close-icon.close-icon {
+    top: .86em; // should be .875em but that messes up the pixel snapping
+    right: .46em; // again some random number helps with pixel snapping of the width
+    width: 1.25em;
+    height: 1.25em;
+    line-height: 1.25;
+  }
+  .tab .close-icon::before {
+    width: 1.25em;
+    height: 1.25em;
+    line-height: 1.25;
+  }
+
+  .tab .title {
+    -webkit-mask: none;
+    margin-left: 1.25em;
+    margin-right: 1.25em;
+  }
+
+  .tab.modified .title,
+  .tab:hover .title {
+    -webkit-mask: linear-gradient( to left, hsla(0,0%,0%,0), hsla(0,0%,0%,1) 1em) no-repeat;
+    -webkit-mask-position: -@modified-icon-width*.6 0;
+  }
+}

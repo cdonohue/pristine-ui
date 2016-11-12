@@ -1,0 +1,53 @@
+atom-text-editor[mini] {
+  line-height: @component-line-height;
+  max-height: @component-line-height + 2; // +2 for borders
+  overflow: auto;
+  .text(light);
+}
+
+atom-text-editor[mini] {
+  font-size: @ui-input-size;
+  line-height: @ui-line-height;
+  max-height: none;
+  padding-left: @ui-padding/3;
+  border-radius: @component-border-radius;
+  color: @text-color-highlight;
+  border: 1px solid @input-border-color;
+  background-color: @input-background-color;
+
+  &,
+  &::shadow {
+    .placeholder-text {
+      color: @text-color-subtle;
+    }
+    .selection .region {
+      background-color: @input-selection-color;
+    }
+    .cursor {
+      border-color: @accent-color;
+      border-width: 2px;
+    }
+  }
+
+  &.is-focused,
+  &.is-focused::shadow {
+    .focus();
+    background-color: @input-background-color-focus;
+    .selection .region {
+      background-color: @input-selection-color-focus;
+    }
+  }
+}
+
+atom-text-editor {
+  /deep/ .gutter[gutter-name=linter] {
+    span.linter-gutter.linter-highlight {
+      &.warning {
+        background-color: @text-color-warning;
+      }
+      &.error {
+        background-color: @text-color-error;
+      }
+    }
+  }
+}

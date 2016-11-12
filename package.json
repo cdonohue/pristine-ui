@@ -1,0 +1,55 @@
+{
+  "name": "pristine-ui",
+  "theme": "ui",
+  "version": "1.8.3",
+  "description": "Clean UI theme",
+  "keywords": [
+    "dark",
+    "adaptive",
+    "ui"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/cdonohue/pristine-ui",
+  "main": "lib/main",
+  "engines": {
+    "atom": ">0.40.0"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.9.7"
+  },
+  "configSchema": {
+    "fontSize": {
+      "title": "Font Size",
+      "description": "Change the UI font size. Needs to be between 8 and 20. In Auto mode, the Font Size will automatically change based on the window size.",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "minimum": 8,
+      "maximum": 20,
+      "default": "Auto"
+    },
+    "layoutMode": {
+      "title": "Layout Mode",
+      "description": "In Auto mode, the UI will automatically adapt based on the window size.",
+      "type": "string",
+      "default": "Auto",
+      "enum": [
+        "Compact",
+        "Auto",
+        "Spacious"
+      ]
+    },
+    "tabSizing": {
+      "title": "Tab Sizing",
+      "description": "In minimum width mode the tabs will be as small as possible but in even width mode, all tabs will be the same size. In auto mode the tabs switch based on the window size.",
+      "type": "string",
+      "default": "Auto",
+      "enum": [
+        "Even",
+        "Auto",
+        "Minimum"
+      ]
+    }
+  }
+}

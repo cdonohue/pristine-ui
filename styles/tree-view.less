@@ -1,0 +1,114 @@
+@tree-view-height: @ui-line-height;
+
+.tree-view {
+  font-size: @ui-size;
+  background: @tree-view-background-color;
+  padding-right: 0;
+
+  .project-root.project-root {
+    &:first-child {
+      padding-top: @ui-padding-pane;
+    }
+    &:before {
+      height: @ui-tab-height;
+      background-clip: padding-box;
+    }
+    & > .header .name {
+      line-height: @ui-tab-height;
+    }
+  }
+
+  .selected {
+    &:before {
+      background: @tree-view-background-selected-color;
+      box-shadow: inset 1px 0 0 rgba(255,255,255,.12);
+      margin-left: 5px;
+    }
+    &.project-root:before,
+    &.directory:before {
+      background: transparent;
+      box-shadow: none;
+      border-right: none;
+      margin-left: initial;
+    }
+  }
+
+  .project-root.selected:before {
+    box-shadow: none;
+    margin-left: -5px;
+  }
+}
+
+.theme-pristine-ui .tree-view .project-root.project-root::before {
+  border-top: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.tree-view-resizer {
+  .tree-view-resize-handle {
+    width: 8px;
+  }
+}
+
+.list-tree .list-tree {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    min-width: 1px;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    background: mix(@level-1-color,@level-2-color);
+  }
+}
+
+.list-item.file.entry {
+  transition: .2s ease-in;
+
+  &:after {
+    .octicon-font();
+    opacity: .26;
+    content: "\f052";
+    position: relative;
+    font-size: 4px;
+    float: left;
+    top: 1px;
+    left: -12.5px;
+    width: 6px;
+    margin-right: -8px;
+  }
+
+  &[class^="status-"], &[class*="status-"] {
+    &:after {
+      opacity: .54;
+    }
+  }
+}
+
+// Variable height, based on ems
+.list-group li:not(.list-nested-item),
+.list-tree li:not(.list-nested-item),
+.list-group li.list-nested-item > .list-item,
+.list-tree li.list-nested-item > .list-item {
+  line-height: @tree-view-height;
+}
+
+.list-group .selected::before,
+.list-tree .selected::before {
+  height: @tree-view-height;
+}
+
+// icon
+.list-group .icon,
+.list-tree .icon {
+  display: inline-block;
+  height: inherit;
+  &::before {
+    top: initial;
+    line-height: inherit;
+    height: inherit;
+    vertical-align: top;
+  }
+}
