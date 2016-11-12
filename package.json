@@ -1,12 +1,14 @@
 {
   "name": "pristine-ui",
   "theme": "ui",
-  "version": "1.8.3",
-  "description": "Clean UI theme",
+  "version": "1.0.0",
+  "description": "Pristine UI theme",
   "keywords": [
     "dark",
     "adaptive",
-    "ui"
+    "ui",
+    "pristine",
+    "clean"
   ],
   "license": "MIT",
   "repository": "https://github.com/cdonohue/pristine-ui",
