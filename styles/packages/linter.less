@@ -1,0 +1,30 @@
+linter-panel {
+  height: auto !important;
+  linter-message {
+    background-color: lighten(@level-2-color, 2%);
+    &:not(:last-child) {
+      border-bottom: 1px solid @level-1-color;
+    }
+    .linter-highlight {
+      &.warning {
+        color: #232323 !important;
+        background-color: @text-color-warning !important;
+      }
+      &.error {
+        background-color: @text-color-error !important;
+      }
+    }
+    .linter-message-item {
+      linter-message-line {
+        vertical-align: baseline;
+        line-height: 1.4;
+        & > .badge {
+          border-radius: 48px;
+          margin-top: -1px;
+          padding: 5px 6px;
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+}
