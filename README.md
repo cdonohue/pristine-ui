@@ -30,7 +30,12 @@ Switch between 3 __Layout Modes__:
 
 1. `Auto` (default) - In Auto mode, the UI and font size will automatically change based on the window size.
 2. `Compact` - The UI stays compact, leaving more space for the editor.
+
+  ![compact-mode](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/compact.png)
+
 3. `Spacious` - The UI is expanded, giving some breathing room.
+
+  ![spacious-mode](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/spacious.png)
 
 And pick a __Tab Sizing__ mode:
 
