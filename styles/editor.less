@@ -40,6 +40,11 @@ atom-text-editor[mini] {
 }
 
 atom-text-editor {
+  /deep/ .gutter {
+    .cursor-line {
+      background-color: transparent !important;
+    }
+  }
   /deep/ .gutter[gutter-name=linter] {
     span.linter-gutter.linter-highlight {
       &.warning {
