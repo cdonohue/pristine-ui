@@ -18,6 +18,14 @@
     }
   }
 
+  &.has-collapsable-children {
+    .list-nested-item > .list-item {
+      &:before {
+        margin-left: -.5px;
+      }
+    }
+  }
+
   .selected {
     &:before {
       background: @tree-view-background-selected-color;
