@@ -16,17 +16,22 @@
 @text-color-highlight:  lighten(@text-color, 20%);
 @text-color-selected:   white;
 
-@text-color-info:    hsl(219,  79%, 66%);
-@text-color-success: hsl(140,  44%, 62%);
-@text-color-warning: hsl( 36,  60%, 72%);
-@text-color-error:   hsl(  9, 100%, 64%);
+@color-info:    hsl(207, 64%, 62%);
+@color-success: hsl(141, 31%, 47%);
+@color-warning: hsl( 34, 70%, 60%);
+@color-error:   hsl(  3, 85%, 64%);
+
+@text-color-info:    lighten(@color-info, 6%);
+@text-color-success: lighten(@color-success, 6%);
+@text-color-warning: lighten(@color-warning, 6%);
+@text-color-error:   lighten(@color-error, 6%);
 
 
 // Background -----------------
-@background-color-info:    hsl(208, 88%, 48%);
-@background-color-success: hsl(132, 58%, 40%);
-@background-color-warning: hsl( 42, 88%, 36%);
-@background-color-error:   hsl(  5, 64%, 50%);
+@background-color-info:    @color-info;
+@background-color-success: @color-success;
+@background-color-warning: @color-warning;
+@background-color-error:   @color-error;
 
 @background-color-highlight: lighten(@base-background-color, 4%);
 @background-color-selected:  lighten(@base-background-color, 8%);
