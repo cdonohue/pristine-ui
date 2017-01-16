@@ -25,9 +25,13 @@ atom-panel.modal {
     padding: 0 @component-padding/2 @component-padding;
     box-shadow: none !important;
     border: none;
+    border-radius: 0;
     border-bottom: 1px solid @base-border-color;
     background: transparent;
     font-size: 2.2em;
+    &.is-focused.editor {
+      border-bottom-color: @base-border-color;
+    }
   }
 
   .select-list ol.list-group,
