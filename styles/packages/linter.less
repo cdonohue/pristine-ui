@@ -16,3 +16,33 @@ linter-panel {
     }
   }
 }
+
+.status-bar {
+  linter-bottom-container {
+    display: inline-flex;
+    align-items: center;
+
+    linter-bottom-tab {
+      &:first-of-type:not([style*="display: none"]) {
+        border-radius: @component-border-radius 0 0 @component-border-radius;
+      }
+
+      &:last-of-type {
+        border-radius: 0 @component-border-radius @component-border-radius 0;
+      }
+    }
+
+    linter-bottom-status {
+      .icon::before {
+        font-size: 1.2em;
+      }
+
+      &.status-success {
+        color: @text-color-success;
+      }
+      &.status-error {
+        color: @text-color-error;
+      }
+    }
+  }
+}

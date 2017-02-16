@@ -33,27 +33,4 @@
   	width: 16px;
     height: 16px;
   }
-
-  linter-bottom-container {
-    linter-bottom-tab {
-      vertical-align: baseline;
-      border: none;
-      &:nth-child(2) {
-        border-radius: @component-border-radius 0 0 @component-border-radius;
-      }
-
-      &:last-of-type {
-        border-radius: 0 @component-border-radius @component-border-radius 0;
-      }
-    }
-
-    linter-bottom-status {
-      &.status-success {
-        color: @text-color-success;
-      }
-      &.status-error {
-        color: @text-color-error;
-      }
-    }
-  }
 }
