@@ -1,9 +1,21 @@
-ul.background-message {
-  font-size: 2.4em;
-  .text(subtle);
-  .text(light);
+background-tips ul.background-message {
+  font-weight: 500;
+  font-size: 2em;
+  color: @text-color-faded;
 
-  .keystroke {
-    .text(normal);
+  .message {
+    padding: 0 @component-padding * 10;
+
+    .keystroke {
+      white-space: nowrap;
+      vertical-align: middle;
+      line-height: 1;
+      padding: .1em .4em;
+      background: @text-color-subtle;
+      border-radius: 4px;
+      color: rgba(255,255,255,.72);
+      border: none;
+      box-shadow: 0 4px rgba(255,255,255,.12);
+    }
   }
 }

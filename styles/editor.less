@@ -1,48 +1,44 @@
-atom-text-editor[mini] {
-  line-height: @component-line-height;
-  max-height: @component-line-height + 2; // +2 for borders
-  overflow: auto;
-  .text(light);
+// Editor in a panel
+
+// TODO: Find a better selector, maybe a new class like atom-text-editor[medium]
+atom-panel-container atom-text-editor.is-focused {
+  .focus();
 }
 
+
+// Mini
+// Usually just single line inputs
+
 atom-text-editor[mini] {
+  overflow: auto;
   font-size: @ui-input-size;
   line-height: @ui-line-height;
-  max-height: none;
+  max-height: @ui-line-height * 5; // rows
   padding-left: @ui-padding/3;
+  box-shadow: inset 0 2px 1px rgba(0,0,0,.12);
   border-radius: @component-border-radius;
   color: @text-color-highlight;
   border: 1px solid @input-border-color;
   background-color: @input-background-color;
 
-  &,
-  &.editor {
-    .placeholder-text {
-      color: @text-color-subtle;
-    }
-    .selection .region {
-      background-color: @input-selection-color;
-    }
-    .cursor {
-      border-color: @accent-color;
-      border-width: 2px;
-    }
+  .placeholder-text {
+    color: @text-color-subtle;
   }
 
-  &.is-focused,
-  &.is-focused.editor {
+  .selection .region {
+    background-color: @input-selection-color;
+  }
+
+  .cursor {
+    border-color: @accent-color;
+    border-width: 2px;
+  }
+
+  &.is-focused {
     .focus();
-    background-color: transparent;
+    background-color: @input-background-color-focus;
     .selection .region {
       background-color: @input-selection-color-focus;
-    }
-  }
-}
-
-atom-text-editor {
-  /deep/ .gutter {
-    .cursor-line {
-      background-color: transparent !important;
     }
   }
 }

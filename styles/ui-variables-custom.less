@@ -1,8 +1,8 @@
-
 // ONE dark UI colors
 // ----------------------------------------------
 
 @import "syntax-variables";
+
 .ui-syntax-color() { @syntax-background-color: hsl(220,24%,20%); } .ui-syntax-color(); // fallback color
 @ui-syntax-color: @syntax-background-color;
 
@@ -28,7 +28,7 @@
 }
 .ui-lightness() when (@ui-s-l >= @ui-inv) {
   @ui-lightness: min(@ui-s-l, 20%); // limit max lightness (for light syntax themes)
-  @ui-lightness-border: @ui-lightness*1.2;
+  @ui-lightness-border: @ui-lightness*.6;
 }
 .ui-lightness();
 
@@ -61,6 +61,9 @@
 @level-2-color: @base-background-color;
 @level-3-color: darken(@base-background-color, 3%);
 
+@level-3-color-hover:  lighten(@level-3-color, 6%);
+@level-3-color-active: lighten(@level-3-color, 3%);
+
 
 // Accent (Custom) -----------------
 @accent-luma:             luma( hsl(@ui-hue, 50%, 50%) ); // get lightness of current hue
@@ -71,8 +74,10 @@
 
 // used for button, tooltip (larger things)
 @accent-bg-color:         mix( hsv( @ui-hue, 66%, 66%), hsl( @ui-hue, 66%, 60%), @accent-luma * 2 ); // mix hsv + hsl (favor hsl for dark, hsv for light colors)
-@accent-bg-text-color:    contrast(@accent-bg-color, hsl(@ui-hue,100%,10%), #fff, 25% );
+@accent-bg-text-color:    contrast(@accent-bg-color, hsl(@ui-hue,100%,10%), #fff, 30% );
 
+// used for text only
+@accent-only-text-color: mix( hsv( @ui-hue, 100%, 66%), hsl( @ui-hue, 100%, 77%), @accent-luma ); // mix hsv + hsl (favor mostly hsl)
 
 // Components (Custom) -----------------
 @badge-background-color:            lighten(@background-color-highlight, 6%);
@@ -82,14 +87,12 @@
 
 @checkbox-background-color:         fade(@accent-bg-color, 33%);
 
-@input-background-color-focus:      fadein(@input-background-color, 6%);
-@input-selection-color:             darken(@background-color-selected, 6%);
-@input-selection-color-focus:       @background-color-selected;
+@input-background-color-focus:      mix(@accent-bg-color, @input-background-color, 10%);
+@input-selection-color:             mix(@accent-color, @input-background-color, 25%);
+@input-selection-color-focus:       mix(@accent-color, @input-background-color, 50%);
 
-@key-binding-border-color:          hsla(0,0%,100%,.1);
-@key-binding-background-color:      hsla(0,0%,100%,.1);
-
-@overlay-backdrop-color:            hsla(@ui-hue,@ui-saturation,5%,.5);
+@overlay-backdrop-color:            hsl(@ui-hue,@ui-saturation,10%);
+@overlay-backdrop-opacity:          .82;
 
 @progress-background-color:         @accent-color;
 
@@ -104,7 +107,7 @@
 @tab-text-color-editor:             contrast(@ui-syntax-color, darken(@ui-syntax-color, 50%), @text-color-highlight );
 @tab-background-color-editor:       @ui-syntax-color;
 
-@tree-view-background-selected-color: lighten(@level-3-color, 3%);
+@tree-view-background-selected-color: lighten(@level-3-color, 5%);
 
 @tooltip-background-color:          @accent-bg-color;
 @tooltip-text-color:                @accent-bg-text-color;
@@ -120,7 +123,7 @@
 @ui-padding-pane:         @ui-size*.5;
 @ui-padding-icon:         @ui-padding/3.3;
 @ui-line-height:          @ui-size*2;
-@ui-tab-height:           @ui-padding*2;
+@ui-tab-height:           @ui-size*2.5;
 
 
 
@@ -133,13 +136,3 @@
 @theme-config-box-shadow: inset 0 0 3px hsla(0, 0%, 100%, .4), 0 1px 3px hsla(0, 0%, 0%, .2);
 @theme-config-box-shadow-selected: inset 0 1px 3px hsla(0, 0%, 0%, .1);
 @theme-config-border-selected: hsla(0, 0%, 100%, .75);
-
-
-
-// Debug
-// Output variables to the top of the UI
-// -------------------------------------
-
-// html:before {
-//   content: "@{variable}";
-// }

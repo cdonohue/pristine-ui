@@ -1,5 +1,4 @@
-
-@import "ui-variables-custom"; // import colors and custom variables
+@import "ui-variables-custom.less"; // import colors and custom variables
 
 // Pristine UI variables
 // ----------------------------------------------
@@ -16,10 +15,10 @@
 @text-color-highlight:  lighten(@text-color, 20%);
 @text-color-selected:   white;
 
-@color-info:    hsl(207, 64%, 62%);
-@color-success: hsl(141, 31%, 47%);
-@color-warning: hsl( 34, 70%, 60%);
-@color-error:   hsl(  3, 85%, 64%);
+@color-info:    #5bc0de;
+@color-success: #5cb85c;
+@color-warning: #f0ad4e;
+@color-error:   #d9534f;
 
 @text-color-info:    lighten(@color-info, 6%);
 @text-color-success: lighten(@color-success, 6%);
@@ -41,7 +40,7 @@
 
 // Base -----------------
 @base-background-color: @ui-bg;
-@base-border-color:     @ui-border;
+@base-border-color:     lighten(@ui-border, 4%);
 
 
 // Components -----------------
@@ -66,7 +65,7 @@
 @button-background-color:          @level-1-color;
 @button-background-color-hover:    lighten(@button-background-color, 2%);
 @button-background-color-selected: @accent-bg-color;
-@button-border-color:              darken(@base-border-color, 6%);
+@button-border-color:              @base-border-color;
 
 @tab-bar-background-color:         @level-3-color;
 @tab-bar-border-color:             @base-border-color;

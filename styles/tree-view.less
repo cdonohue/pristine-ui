@@ -3,12 +3,8 @@
 .tree-view {
   font-size: @ui-size;
   background: @tree-view-background-color;
-  padding-right: 0;
 
   .project-root.project-root {
-    &:first-child {
-      padding-top: @ui-padding-pane;
-    }
     &:before {
       height: @ui-tab-height;
       background-clip: padding-box;
@@ -18,20 +14,13 @@
     }
   }
 
-  &.has-collapsable-children {
-    .list-nested-item > .list-item {
-      &:before {
-        margin-left: -.5px;
-      }
-    }
-  }
-
   .selected {
     &:before {
       background: @tree-view-background-selected-color;
       box-shadow: inset 1px 0 0 rgba(255,255,255,.16);
       margin-left: 5px;
     }
+
     &.project-root:before,
     &.directory:before {
       background: transparent;
@@ -41,9 +30,41 @@
     }
   }
 
-  .project-root.selected:before {
-    box-shadow: none;
-    margin-left: -5px;
+  .list-item + .list-tree {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      min-width: 1px;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 5px;
+      background: rgba(255, 255, 255, .12);
+    }
+  }
+
+  .list-item.file.entry {
+    transition: .2s ease-in;
+
+    &:after {
+      opacity: .26;
+      .octicon-font();
+      content: "\f052";
+      position: relative;
+      font-size: 4px;
+      float: left;
+      top: 1px;
+      left: -12.5px;
+      width: 6px;
+      margin-right: -8px;
+    }
+
+    &[class^="status-"], &[class*="status-"] {
+      &:after {
+        opacity: .54;
+      }
+    }
   }
 }
 
@@ -55,43 +76,6 @@
 .tree-view-resizer {
   .tree-view-resize-handle {
     width: 8px;
-  }
-}
-
-.list-tree .list-tree {
-  position: relative;
-  &:before {
-    content: '';
-    position: absolute;
-    min-width: 1px;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 5px;
-    background: mix(@level-1-color,@level-2-color);
-  }
-}
-
-.list-item.file.entry {
-  transition: .2s ease-in;
-
-  &:after {
-    .octicon-font();
-    opacity: .26;
-    content: "\f052";
-    position: relative;
-    font-size: 4px;
-    float: left;
-    top: 1px;
-    left: -12.5px;
-    width: 6px;
-    margin-right: -8px;
-  }
-
-  &[class^="status-"], &[class*="status-"] {
-    &:after {
-      opacity: .54;
-    }
   }
 }
 
@@ -119,4 +103,23 @@
     height: inherit;
     vertical-align: top;
   }
+}
+
+// Active tree-view marker --------------
+
+.tree-view::before {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  height: @ui-tab-height;
+  width: 2px;
+  background: transparent;
+  opacity: 0;
+  transition: opacity .16s;
+}
+
+.tree-view:focus::before {
+  opacity: 1;
+  transition-duration: .32s;
 }

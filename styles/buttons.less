@@ -1,4 +1,3 @@
-
 @btn-border: 1px solid @button-border-color;
 @btn-padding: 0 @ui-size/1.25;
 
@@ -8,13 +7,10 @@
   color: @text-color;
   text-shadow: none;
   border: @btn-border;
+  transition: .2s box-shadow ease-in-out;
+  box-shadow: 0 3px 10px rgba(0,0,0,.12);
   background-color: @color;
 
-  &:focus {
-    //.focus(); // disabled for now, since :focus styles stay even after releasing mouse.
-    outline: none;
-  }
-  &:focus,
   &:hover {
     color: @text-color-highlight;
     background-image: linear-gradient(lighten(@hover-color, 2%), @hover-color);
@@ -29,6 +25,10 @@
   &.selected:focus,
   &.selected:hover {
     background: lighten(@selected-color, 2%);
+  }
+  &:focus {
+    .focus(); // unfortunately :focus styles stay even after releasing mouse.
+    border: @btn-border;
   }
 }
 
@@ -49,6 +49,11 @@
   &:hover,
   &:focus {
     color: @_text-color;
+  }
+  &:focus {
+    border-color: transparent;
+    background-clip: padding-box;
+    // box-shadow: inset 0 0 0 1px fade(@base-border-color, 50%), 0 0 0 1px @color;
   }
 
   &.icon:before {
@@ -117,11 +122,16 @@
   &:hover {
     z-index: 0;
   }
+  &.btn:focus {
+    z-index: 1;
+    .focus();
+  }
 
   &:first-child {
     border-left: @btn-border;
   }
-  &:last-child {
+  &:last-child,
+  &.selected:last-child {
     border-right: @btn-border;
   }
 
@@ -144,18 +154,25 @@
     }
   }
 
-  &.btn:focus {
-    z-index: 1;
-  }
-
   &.selected,
   &.selected:first-child,
   &.selected:last-child {
     color: @button-text-color-selected;
-    border: 1px solid @button-border-color-selected;
+    border-color: @button-border-color-selected;
   }
-  &.selected + .btn {
-    border-left-color: @button-border-color-selected;
+
+  & when (@ui-lightness > 50%) {
+    &.selected + .btn {
+      border-left-color: @button-border-color-selected;
+    }
+    &.selected + .selected {
+      border-left-color: mix(@button-border-color, @button-border-color-selected);
+    }
+  }
+
+  &.selected:focus {
+    border-color: @button-background-color-selected;
+    box-shadow: inset 0 0 0 1px fade(@base-border-color, 50%), 0 0 0 1px @button-background-color-selected;
   }
 }
 

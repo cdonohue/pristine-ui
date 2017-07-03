@@ -1,4 +1,3 @@
-
 @modal-padding: @ui-padding/2 @ui-padding/1.5;
 @modal-width: @ui-size * 50;
 
@@ -8,7 +7,7 @@ atom-panel-container.modal {
 }
 
 atom-panel.modal {
-  .overlay-shadow();
+  // .overlay-shadow();
   position: relative;
   width: 100%;
   max-width: @modal-width;
@@ -100,9 +99,8 @@ atom-panel.modal {
     bottom: 0;
     z-index: 0;
     background-color: @overlay-background-color;
-    //border-top: 1px solid hsla(0,0%,0%,.2);
     border-radius: @component-border-radius*2;
-    box-shadow: 0 3px 12px hsla(0,0%,0%,.12);
+    box-shadow: 0 6px 12px hsla(0,0%,0%,.26);
   }
 
   // Backdrop
@@ -117,13 +115,14 @@ atom-panel.modal {
     bottom: 0;
     z-index: -1;
     background: @overlay-backdrop-color;
+    opacity: @overlay-backdrop-opacity;
     backface-visibility: hidden; // fixes scrollbar on retina screens
-    -webkit-animation: overlay-fade .1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation: overlay-fade .2s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 
   @-webkit-keyframes overlay-fade {
     0% { opacity: 0; }
-    100% { opacity: 1; }
+    100% { opacity: @overlay-backdrop-opacity; }
   }
 
 }
