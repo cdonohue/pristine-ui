@@ -2,11 +2,11 @@
 > A dark UI theme based off of [One Dark UI](https://atom.io/themes/one-dark-ui)
 
 #### Editing
-![editing](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/editing.png)
+![editing](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/editor.png)
 
 #### Overlays
-![overlay](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/overlays.png)
-> Shown with the [duotone-dark-space-syntax](https://atom.io/themes/duotone-dark-space-syntax) syntax theme by simurai. Icons by [file-icons](https://atom.io/packages/file-icons).
+![overlay](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/overlay.png)
+> Shown with the [duotone-dark-sky-syntax](https://atom.io/themes/duotone-dark-sky-syntax) syntax theme by simurai. Icons by [file-icons](https://atom.io/packages/file-icons).
 
 ### New Features
 
@@ -22,26 +22,23 @@ Once installed, this theme can be activated by going to the __Settings > Themes_
 
 ### Settings
 
-Since this theme is forked from One Dark UI, it brings along some nice additions of being able to tailor font sizes and layout modes.
+Since this theme is forked from One Dark UI, it brings along some nice additions of being able to tailor font and tab sizes.
 
-In the theme settings you can change the __Font Size__ to scale the whole UI up or down.
+- Change the __Font Size__ to scale the whole UI up or down.
+- Choose between 3 __Tab Sizing__ modes.
+- Hide the __dock buttons__.
 
-Switch between 3 __Layout Modes__:
+### Customize
 
-1. `Auto` (default) - In Auto mode, the UI and font size will automatically change based on the window size.
-2. `Compact` - The UI stays compact, leaving more space for the editor.
+It's also possible to resize only certain areas by adding the following to your styles.less (Use DevTools to find the right selectors):
 
-  ![compact-mode](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/compact.png)
-
-3. `Spacious` - The UI is expanded, giving some breathing room.
-
-  ![spacious-mode](https://raw.githubusercontent.com/cdonohue/pristine-ui/master/screenshots/spacious.png)
-
-And pick a __Tab Sizing__ mode:
-
-1. `Auto` (default) - In Auto mode, the tabs switch based on the window size.
-2. `Minimum` - In Minimum mode, the tabs will be as small as possible.
-3. `Even` - In Even mode, all tabs will be the same size.
+``` css
+.theme-pristine-ui {
+  .tab-bar { font-size: 18px; }
+  .tree-view { font-size: 14px; }
+  .status-bar { font-size: 12px; }
+}
+```
 
 ### Special Thanks
 To the One Dark UI creators/contributors, without which this theme would not exist.
