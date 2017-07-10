@@ -40,7 +40,7 @@
 
 // Base -----------------
 @base-background-color: @ui-bg;
-@base-border-color:     lighten(@ui-border, 4%);
+@base-border-color:     @ui-border;
 
 
 // Components -----------------
@@ -65,7 +65,7 @@
 @button-background-color:          @level-1-color;
 @button-background-color-hover:    lighten(@button-background-color, 2%);
 @button-background-color-selected: @accent-bg-color;
-@button-border-color:              @base-border-color;
+@button-border-color:              lighten(@base-border-color, 3%);
 
 @tab-bar-background-color:         @level-3-color;
 @tab-bar-border-color:             @base-border-color;
