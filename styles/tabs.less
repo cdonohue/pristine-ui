@@ -1,14 +1,14 @@
 // Tabs
 
 @tab-border: 1px solid @tab-border-color;
-@title-padding: .66em;
-@icon-padding-top: .5em; // 2.5 (total) - 1.5 (text) / 2
-@icon-padding-right: .5em;
+@title-padding: 1em;
+@icon-padding-top: 1em; // 2.5 (total) - 1.5 (text) / 2
+@icon-padding-right: 1em;
 
 .tab-bar {
   position: relative;
   height: @ui-tab-height;
-  // box-shadow: inset 0 -1px 0 @tab-border-color;
+  box-shadow: inset 0 -1px 0 @tab-border-color;
   background: @tab-bar-background-color;
   overflow-x: auto;
   overflow-y: hidden;
@@ -28,7 +28,7 @@
   .tab {
     position: relative;
     top: 0;
-    padding: 0;
+    padding: .2em;
     margin: 0;
     height: inherit;
     font-size: inherit;
@@ -37,28 +37,20 @@
     background-color: @tab-background-color;
     box-shadow: inherit;
     border-left: @tab-border;
-    border-image: linear-gradient(to top, lighten(@base-border-color, 12%), rgba(0, 0, 0, 0)) 1 100%;;
     &.active {
       color: @tab-text-color-active;
       background-color: @tab-background-color-active;
-      border-left: 1px solid transparent;
-      border-image: none;
       box-shadow: none;
-      & + .tab {
-        border-left: 1px solid transparent;
-        border-image: none;
-      }
     }
     &:first-of-type {
       border-left: 1px solid transparent;
-      border-image: none;
     }
     &:last-of-type {
       // use box-shadow to not take up any space
-      // box-shadow: inset 0 -1px 0 @tab-border-color, 1px 0 0 @base-border-color;
+      box-shadow: inset 0 -1px 0 @tab-border-color, 1px 0 0 @base-border-color;
     }
     &.active:last-of-type {
-      // box-shadow: 1px 0 0 @base-border-color;
+      box-shadow: 1px 0 0 @base-border-color;
     }
 
 
