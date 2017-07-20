@@ -1,4 +1,4 @@
-@btn-border: 1px solid @button-border-color;
+@btn-border: 1px solid transparent; //@button-border-color;
 @btn-padding: 0 @ui-size/1.25;
 
 // Mixins -----------------------
@@ -7,13 +7,13 @@
   color: @text-color;
   text-shadow: none;
   border: @btn-border;
-  transition: .2s box-shadow ease-in-out;
-  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+  transition: .15s ease-in-out;
+  box-shadow: 1px 2px 12px rgba(0,0,0,.26);
   background-color: @color;
 
   &:hover {
     color: @text-color-highlight;
-    background-image: linear-gradient(lighten(@hover-color, 2%), @hover-color);
+    background: @hover-color;
   }
   &:active {
     background: darken(@color, 4%);
