@@ -21,7 +21,7 @@
 		min-width: @ui-size * 15;
 		max-width: 100%;
 		border-width: 0 1px 0 0;
-		border-image: linear-gradient(@level-2-color 10px, @base-border-color 200px) 0 1 0 0 stretch;
+		border-image: linear-gradient(@level-2-color 0px, @base-border-color 200px) 0 1 0 0 stretch;
 		background: @level-2-color;
 
 		.btn {
@@ -33,8 +33,6 @@
 				vertical-align: middle;
 			}
 		}
-
-
 	}
 	.nav {
 		& > li > a {
@@ -48,6 +46,9 @@
 
 	& > .panels {
 		background-color: @level-2-color;
+		.section.settings-panel {
+			border-top: none;
+		}
 	}
 
 	.section-container {
@@ -92,7 +93,7 @@
 			}
 		}
 		border: none;
-		box-shadow: 0 3px 12px rgba(0,0,0,.26);
+		box-shadow: 0 6px 12px rgba(0,0,0,.16);
 	}
 
 
