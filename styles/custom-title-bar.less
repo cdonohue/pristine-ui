@@ -11,24 +11,33 @@
   .tab-bar .tab {
     border-image: linear-gradient(to top, @tab-border-color, rgba(0, 0, 0, 0) 90%) 1;
     &.active {
-      z-index: 1;
-      box-shadow: 0 -5px 12px rgba(0,0,0,.2);
+      z-index: 3;
+      box-shadow: 0 4px 6px rgba(0,0,0,.24);
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }
     &:first-of-type {
       border-image: none;
     }
-  }
-
-  atom-dock {
-    &.left {
-      > .atom-dock-inner.atom-dock-open.left {
-        border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), @base-border-color 32px) 1;
+    &:last-of-type {
+      border-right: none;
+      box-shadow: inset 0 -1px 0 @tab-border-color;
+      &.active {
+        box-shadow: none;
       }
     }
-    &.right {
-      > .atom-dock-inner.atom-dock-open.right {
+  }
+
+  atom-pane.active .tab.active:before {
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  atom-dock.left,
+  atom-dock.right {
+    > .atom-dock-inner.atom-dock-open {
+      &.left,
+      &.right {
         border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), @base-border-color 32px) 1;
       }
     }
