@@ -1,0 +1,36 @@
+.custom-title-bar {
+  atom-panel {
+    &.header {
+      .title-bar {
+        border-bottom: none;
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+  .tab-bar .tab {
+    border-image: linear-gradient(to top, @tab-border-color, rgba(0, 0, 0, 0) 90%) 1;
+    &.active {
+      z-index: 1;
+      box-shadow: 0 -5px 12px rgba(0,0,0,.2);
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+    &:first-of-type {
+      border-image: none;
+    }
+  }
+
+  atom-dock {
+    &.left {
+      > .atom-dock-inner.atom-dock-open.left {
+        border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), @base-border-color 32px) 1;
+      }
+    }
+    &.right {
+      > .atom-dock-inner.atom-dock-open.right {
+        border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), @base-border-color 32px) 1;
+      }
+    }
+  }
+}
