@@ -9,38 +9,23 @@
   }
 
   .tab-bar .tab {
-    border-image: linear-gradient(to top, @tab-border-color 40%, rgba(0, 0, 0, 0) 70%) 1;
+    border-image: linear-gradient(to top, @tab-border-color 50%, rgba(0, 0, 0, 0) 90%) 1;
     &.active {
-      z-index: 3;
-      box-shadow: 0 4px 6px rgba(0,0,0,.24);
-      border-left: 1px solid transparent;
+      box-shadow: inset 0 1px 0 @tab-border-color;
       border-image: none;
-      border-top-left-radius: 3px;
-      border-top-right-radius: 3px;
+      & + .tab {
+        border-image: none;
+      }
     }
     &:first-of-type {
       border-image: none;
+      border-left: 1px solid transparent;
     }
     &:last-of-type {
-      border-right: 1px solid transparent;
-      box-shadow: inset 0 -1px 0 @tab-border-color;
+      box-shadow: none;
       &.active {
-        box-shadow: none;
-      }
-    }
-  }
-
-  atom-pane.active .tab.active:before {
-    border-top-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
-
-  atom-dock.left,
-  atom-dock.right {
-    > .atom-dock-inner.atom-dock-open {
-      &.left,
-      &.right {
-        border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), @base-border-color 32px) 1;
+        box-shadow: inset 0 1px 0 @tab-border-color,
+                    inset -1px 0 0 @tab-border-color;
       }
     }
   }
