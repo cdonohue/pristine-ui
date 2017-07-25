@@ -64,8 +64,17 @@
 		padding: @ui-padding*3;
 	}
 
-	.themes-panel .control-group {
-		margin-top: @ui-padding*2;
+	.themes-panel {
+		.control-group {
+		  margin-top: @ui-padding*2;
+		}
+
+		.select-container {
+			.btn.active-theme-settings,
+			.btn.active-syntax-settings {
+        margin-left: 4px;
+			}
+		}
 	}
 
 
