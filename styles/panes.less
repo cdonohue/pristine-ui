@@ -8,6 +8,9 @@ atom-pane-container {
     .item-views {
       // prevent atom-text-editor from leaking ouside might improve performance
       overflow: hidden;
+      .pane-item {
+        background-color: @syntax-background-color;
+      }
     }
   }
 
